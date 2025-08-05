@@ -6,6 +6,7 @@ Special thanks to the authors of the sound and visual resources that allowed me 
 - Sound of oars on the lake: https://lasonotheque.org/ramer-lentement-s1514.html
 - Boat object: https://assetstore.unity.com/packages/3d/vehicles/sea/old-rowboat-31917
 - Station: https://github.com/hs-hq/spe_arvr_resources/tree/main/Unity%20-%20VR%20Room/Assets
+- Music: https://ende.app/fr?from_filmmusic=1
 
 About myself:
 - Frédéric Urbani

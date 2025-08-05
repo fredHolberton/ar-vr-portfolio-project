@@ -73,13 +73,13 @@
     <Compile Include="Assets\Scripts\ChessBoadController.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\UnityDetail.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Extras\CameraFly.cs" />
-    <Compile Include="Assets\Package assets\Sci-Fi UI\Demo_Assets\scripts\GUI_Demo.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Package assets\Ata Khani\Modular Sewer Props\Scripts\SelectionBase.cs" />
     <Compile Include="Assets\Scripts\GlassDoorController.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\LayerObject.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldPopulation\PositionGenerator.cs" />
+    <Compile Include="Assets\Scripts\IntroManager.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\WorldBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
