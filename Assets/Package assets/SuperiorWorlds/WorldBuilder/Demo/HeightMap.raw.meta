@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 519ce359cd7b86d42b1ed444a03b7b2b
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 258550
+  packageName: World Builder
+  packageVersion: 1.0
+  assetPath: Assets/SuperiorWorlds/WorldBuilder/Demo/HeightMap.raw
+  uploadId: 610376
