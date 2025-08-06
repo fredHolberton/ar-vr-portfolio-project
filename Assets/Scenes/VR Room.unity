@@ -2396,13 +2396,13 @@ PrefabInstance:
       addedObject: {fileID: 1102805740}
     - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1102805747}
-    - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1102805746}
     - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1102805748}
+    - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1102805754}
     - targetCorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 193505219}
@@ -9833,7 +9833,6 @@ GameObject:
   - component: {fileID: 990749413}
   - component: {fileID: 990749416}
   - component: {fileID: 990749417}
-  - component: {fileID: 990749418}
   m_Layer: 0
   m_Name: BoatPlayer
   m_TagString: Untagged
@@ -9980,28 +9979,6 @@ MonoBehaviour:
   gainBoostDb: 0
   enableAcoustics: 0
   reverbSendDb: 0
---- !u!95 &990749418
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990749412}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3b5545859acf8f24ea4cbd341d16bd6e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &994573849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11276,8 +11253,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d8209ba7424ead54a83520e3b5224bcf, type: 3}
-  m_Resource: {fileID: 8300000, guid: d8209ba7424ead54a83520e3b5224bcf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f946be5a1587104408675f172684908e, type: 3}
+  m_Resource: {fileID: 8300000, guid: f946be5a1587104408675f172684908e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.29
   m_Pitch: 1
@@ -11363,22 +11340,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1102805747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102805726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 007f357e4c8c1f54d82b0ff18d6ad1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 1370178323}
-  boatPlayer: {fileID: 990749412}
-  introBoatAnimator: {fileID: 990749418}
-  introCameraAnimator: {fileID: 1102805748}
 --- !u!95 &1102805748
 Animator:
   serializedVersion: 7
@@ -11401,6 +11362,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1102805754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102805726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007f357e4c8c1f54d82b0ff18d6ad1ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrOrigin: {fileID: 1370178323}
+  mainCanvas: {fileID: 1370178323}
+  boatPlayer: {fileID: 990749412}
+  introCameraAnimator: {fileID: 1102805748}
+  doorAnimator: {fileID: 2069652075}
 --- !u!1001 &1106836624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23076,6 +23054,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 428906, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
   m_PrefabInstance: {fileID: 2063180362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2069652075 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9546954, guid: 820591594dcfa124d8a9c5d016d6c22c, type: 3}
+  m_PrefabInstance: {fileID: 1471692327}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2071739151
 PrefabInstance:

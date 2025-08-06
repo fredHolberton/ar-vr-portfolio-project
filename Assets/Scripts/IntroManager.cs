@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
-
     /// <summary>
     /// Object canvas to be desabled during into 
     /// </summary>
@@ -10,9 +9,9 @@ public class IntroManager : MonoBehaviour
 
     [SerializeField] private GameObject boatPlayer = null;
 
-    [SerializeField] private Animator introBoatAnimator = null;
-
     [SerializeField] private Animator introCameraAnimator = null;
+
+    [SerializeField] private Animator doorAnimator = null;
 
     private bool _BoatAndCameraAreSynchronized = false;
     private Vector3 _decalage;
@@ -24,7 +23,6 @@ public class IntroManager : MonoBehaviour
         _BoatAndCameraAreSynchronized = false;
         _decalage = new Vector3(0.343f, 0.167f, 0.067f);
 
-        introBoatAnimator.enabled = false;
         introCameraAnimator.enabled = true;
     }
 
@@ -32,17 +30,38 @@ public class IntroManager : MonoBehaviour
     {
         if (_BoatAndCameraAreSynchronized)
         {
-            transform.position = boatPlayer.transform.position + _decalage;
-            transform.rotation = boatPlayer.transform.rotation;
+            boatPlayer.transform.position = transform.position - _decalage;
+            boatPlayer.transform.rotation = transform.rotation;
         }
     }
 
 
-    public void SynchoniseBoatAndCamera()
+    public void SynchroniseBoatAndCamera()
     {
         _BoatAndCameraAreSynchronized = true;
-        introBoatAnimator.enabled = true;
-        introCameraAnimator.enabled = false;
+        //introBoatAnimator.enabled = true;
+        //introCameraAnimator.enabled = false;
         Debug.Log("Syncho on");
+    }
+
+    public void DesynchronizeBoatAndcamera()
+    {
+        _BoatAndCameraAreSynchronized = false;
+        Debug.Log("Syncho off");
+    }
+
+    public void OpenDoor()
+    {
+        doorAnimator.SetBool("character_nearby", true);
+    }
+
+    public void CloseDoor()
+    {
+        doorAnimator.SetBool("character_nearby", false);
+    }
+
+    public void EndOfIntro()
+    {
+        // End of animation and start of player welcome
     }
 }
