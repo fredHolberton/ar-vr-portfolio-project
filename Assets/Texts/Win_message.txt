@@ -1,0 +1,4 @@
+Congratulations!
+You managed to open the station door before the timer ran out.
+You may now leave the station.
+It was a pleasure meeting you, brave visitor.

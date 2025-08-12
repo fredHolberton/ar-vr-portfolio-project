@@ -65,21 +65,24 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.30f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Managers\AmbianceMusicManager.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\UnityTree.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\WorldLayer.cs" />
+    <Compile Include="Assets\Scripts\Managers\IntroManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\ChessBoadController.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldPopulation\FastPoissonDiskSampling.cs" />
-    <Compile Include="Assets\Scripts\CustomInputAction.cs" />
-    <Compile Include="Assets\Scripts\ProjectorController.cs" />
-    <Compile Include="Assets\Scripts\ChessBoadController.cs" />
+    <Compile Include="Assets\Scripts\Managers\CountdownTimer.cs" />
+    <Compile Include="Assets\Scripts\Input\CustomInputAction.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\UnityDetail.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Extras\CameraFly.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\Environment\GlassDoorController.cs" />
     <Compile Include="Assets\Package assets\Ata Khani\Modular Sewer Props\Scripts\SelectionBase.cs" />
-    <Compile Include="Assets\Scripts\GlassDoorController.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\LayerObject.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\ProjectorController.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldPopulation\PositionGenerator.cs" />
-    <Compile Include="Assets\Scripts\IntroManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ComputerVoiceManager.cs" />
     <Compile Include="Assets\Package assets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\WorldBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,11 +90,14 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Texts\Chess_game_complete.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Package assets\Ata Khani\Modular Sewer Props\Shaders\BRP_MaskMap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
+    <None Include="Assets\Texts\Welcome.txt" />
+    <None Include="Assets\Texts\Glass_door_unlocked.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -100,6 +106,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Texts\Win_message.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Package assets\Ata Khani\Modular Sewer Props\Shaders\BRP_MaskMap_Transparent.shader" />
