@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
-    [Header("Main UI")]
     /// <summary>
-    /// Object canvas to be desabled during into 
+    /// instance of the class IntroManager
     /// </summary>
-    [SerializeField] private GameObject mainCanvas = null;
+    public static IntroManager instance;
 
-
+  
     [Header("Boat player")]
     [SerializeField] private GameObject boatPlayer = null;
 
@@ -40,13 +39,24 @@ public class IntroManager : MonoBehaviour
     private bool _BoatAndCameraAreSynchronized = false;
     private Vector3 _decalage;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        introCameraAnimator.enabled = false;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        mainCanvas.SetActive(false);
         _BoatAndCameraAreSynchronized = false;
         _decalage = new Vector3(0.343f, 0.167f, 0.067f);
+
         playerPerson.SetActive(true);
+
         welcomeText.SetActive(false);
         titleText.SetActive(false);
         musicsText.SetActive(false);
@@ -58,17 +68,10 @@ public class IntroManager : MonoBehaviour
         stationText.SetActive(false);
         stationAuthorText.SetActive(false);
         landText.SetActive(false);
-        landAuthorText.SetActive (false);
+        landAuthorText.SetActive(false);
         designText.SetActive(false);
         designAuthorText.SetActive(false);
         creditsCanvas.SetActive(true);
-
-
-        GameManager.instance.BlockInteractions();
-
-        introCameraAnimator.enabled = true;
-        AmbianceMusicManager.instance.PlayIntro(0.1f);
-        //EndOfIntro();
     }
 
     void LateUpdate()
@@ -80,6 +83,12 @@ public class IntroManager : MonoBehaviour
         }
     }
 
+    public void PlayIntro()
+    {
+        Debug.Log("Play intro");
+        introCameraAnimator.enabled = true;
+        AmbianceMusicManager.instance.PlayIntro(0.1f);
+    }
 
     public void SynchroniseBoatAndCamera()
     {
@@ -88,7 +97,7 @@ public class IntroManager : MonoBehaviour
         // Display Music credits
         musicsText.SetActive(true);
         musicAuthorText.SetActive(true);
-        
+
         Debug.Log("Syncho on");
     }
 
@@ -150,20 +159,8 @@ public class IntroManager : MonoBehaviour
         // End of animation:
         // 1. Enable Credits canvas
         creditsCanvas.SetActive(false);
-        
-        // 2. start of game rules computer voice
-        Debug.Log("Start of the presentation of the rules");
-        ComputerVoiceManager.instance.SayGameRules(0.5f, onRulesCompleted);
-    }
 
-    private void onRulesCompleted()
-    {
-        Debug.Log("End of the presentation of the rules");
-        // 1. Display UI
-        mainCanvas.SetActive(true);
-
-        // 2. unlock game
-        GameManager.instance.AllowInteractions();
-
+        // 2 call GameManager for starting game
+        GameManager.instance.StartGame();
     }
 }

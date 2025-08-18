@@ -15,6 +15,8 @@ public class ComputerVoiceManager : MonoBehaviour
 
     [SerializeField] private AudioClip glassDoorLockedClip = null;
 
+    [SerializeField] private AudioClip glassDoorUnlockedClip = null;
+
 
     private void Awake()
     {
@@ -32,6 +34,11 @@ public class ComputerVoiceManager : MonoBehaviour
     public void SayGlassDoorIsLocked(float volume)
     {
         audioSource.PlayOneShot(glassDoorLockedClip, volume);
+    }
+
+    public void SayGlassDoorIsUnLocked(float volume)
+    {
+        audioSource.PlayOneShot(glassDoorUnlockedClip, volume);
     }
 
     private IEnumerator PlaySoundAndWait(AudioClip audioClip, float volume, Action onComplete)

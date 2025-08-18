@@ -1,0 +1,1 @@
+C:\Fred\Holberton\projet portfolio\projet\EscapeStation\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\2o6u64h6\obj\arm64-v8a

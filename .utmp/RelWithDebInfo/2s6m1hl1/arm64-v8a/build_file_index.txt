@@ -1,0 +1,2 @@
+C:\Fred\Holberton\projet portfolio\projet\EscapeStation\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Fred\Holberton\projet portfolio\projet\EscapeStation\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
