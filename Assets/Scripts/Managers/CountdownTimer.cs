@@ -6,12 +6,13 @@ public class CountdownTimer : MonoBehaviour
     /// <summary>
     /// Countdown start time in minuts
     /// </summary>
-    [SerializeField] private int countdownTime = 30; 
+    [SerializeField] private int countdownTime = 30;
     [SerializeField] private TextMeshProUGUI countdownText = null;
 
     private int remainingSeconds;
     private bool isRunning = false;
     private float timer;
+    private bool alarmTriggered = false;
 
     private void Start()
     {
@@ -24,13 +25,21 @@ public class CountdownTimer : MonoBehaviour
 
     private void Update()
     {
-        if (!isRunning) return;
+        if ((!isRunning) || GameManager.instance.GetGameFinished())
+            return;
 
         timer += Time.deltaTime;
         if (timer >= 1f) // Chaque seconde
         {
             timer = 0f;
             remainingSeconds--;
+
+            if (remainingSeconds <= 60 && !alarmTriggered)
+            {
+                alarmTriggered = true;
+                CountdownAboutFinished();
+
+            }
 
             if (remainingSeconds <= 0)
             {
@@ -60,6 +69,14 @@ public class CountdownTimer : MonoBehaviour
     private void CountdownFinished()
     {
         Debug.Log("Compte à rebours terminé !");
-        // Tu peux lancer une autre action ici (par ex. démarrer le jeu)
+        // The time is over. Launch the station immersion
+        GameManager.instance.GameLost();
+    }
+
+    private void CountdownAboutFinished()
+    {
+        Debug.Log("Plus qu'une minute restante !");
+        // The time is about over. Start the alarm mode
+        GameManager.instance.StartAlarmMode();
     }
 }

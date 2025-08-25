@@ -14,10 +14,9 @@ public class IntroManager : MonoBehaviour
     [SerializeField] private GameObject playerPerson = null;
 
 
-    [Header("Intro")]
+    [Header("Animator")]
     [SerializeField] private Animator introCameraAnimator = null;
 
-    [SerializeField] private Animator doorAnimator = null;
 
     [Header("Credits")]
     [SerializeField] private GameObject creditsCanvas = null;
@@ -119,26 +118,28 @@ public class IntroManager : MonoBehaviour
     {
         _BoatAndCameraAreSynchronized = false;
         boatPlayer.GetComponent<AudioSource>().Pause();
-
-        // Display Station credits
-        stationText.SetActive(true);
-        stationAuthorText.SetActive(true);
-
         Debug.Log("Syncho off");
+
+        // Display Land credits
+        landText.SetActive(true);
+        landAuthorText.SetActive(true);
     }
 
     public void StartCrimbing()
     {
         playerPerson.SetActive(false);
+    }
 
-        // Display land credits
-        landText.SetActive(true);
-        landAuthorText.SetActive(true);  
+    public void StopCrimbing()
+    {
+        // Display Station credits
+        stationText.SetActive(true);
+        stationAuthorText.SetActive(true);
     }
 
     public void OpenDoor()
     {
-        doorAnimator.SetBool("character_nearby", true);
+        MainDoorController.instance.OpenCloseDoor();
 
         // Display Design credits
         designText.SetActive(true);
@@ -147,7 +148,8 @@ public class IntroManager : MonoBehaviour
 
     public void CloseDoor()
     {
-        doorAnimator.SetBool("character_nearby", false);
+        MainDoorController.instance.OpenCloseDoor();
+        MainDoorController.instance.SetDoorIsLocked(true);
 
         // Start to display the Credits canvas
         welcomeText.SetActive(true);
@@ -157,6 +159,8 @@ public class IntroManager : MonoBehaviour
     public void EndOfIntro()
     {
         // End of animation:
+        introCameraAnimator.enabled = false;
+        
         // 1. Enable Credits canvas
         creditsCanvas.SetActive(false);
 

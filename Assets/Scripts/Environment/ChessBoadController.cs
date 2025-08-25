@@ -57,22 +57,29 @@ public class ChessBoadController : MonoBehaviour
             {
                 other.gameObject.SetActive(false);
                 knightLight.SetActive(true);
+                chessPieces[nbFoundPieces].GetComponent<Image>().sprite = knightLightImage;
 
             }
             else if (other.gameObject.name == "PawnDark")
             {
                 other.gameObject.SetActive(false);
                 pawnDark.SetActive(true);
-
+                chessPieces[nbFoundPieces].GetComponent<Image>().sprite = pawnDarkImage;
             }
             else if (other.gameObject.name == "RookDark")
             {
                 other.gameObject.SetActive(false);
                 rookDark.SetActive(true);
-
+                chessPieces[nbFoundPieces].GetComponent<Image>().sprite = rookDarkImage;
             }
             chessPieces[nbFoundPieces].SetActive(true);
             nbFoundPieces += 1;
+
+            if (nbFoundPieces == 4)
+            {
+                GameManager.instance.ChessboardComplete();
+            }
+                
         }
         
 

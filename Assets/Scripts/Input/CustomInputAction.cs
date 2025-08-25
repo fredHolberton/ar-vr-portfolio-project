@@ -18,12 +18,17 @@ public class CustomInputAction : MonoBehaviour
 
     void ButtonWasPressed(InputAction.CallbackContext context)
     {
-        if (isGrabbed) whiteLight.SetActive(true);
+        if (isGrabbed)
+        {
+            whiteLight.SetActive(true);
+            GameManager.instance.TheFlashLightIsOn();
+        }    
     }
 
     void ButtonWasReleased(InputAction.CallbackContext context)
     {
         whiteLight.SetActive(false);
+        GameManager.instance.TheFlashLightIsOff();
     }
 
     public void FlashLightIsGrabbed()
