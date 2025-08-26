@@ -70,9 +70,9 @@ public class ComputerVoiceManager : MonoBehaviour
         audioSource.PlayOneShot(victoryMessageClip, volume);
     }
 
-    public void SayDefeatMessage(float volume)
+    public void SayDefeatMessage(float volume, Action onComplete)
     {
-        audioSource.PlayOneShot(defeatMessageClip, volume);
+        StartCoroutine(PlaySoundAndWait(defeatMessageClip, volume, onComplete));
     }
 
     private IEnumerator PlaySoundAndWait(AudioClip audioClip, float volume, Action onComplete)

@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         mouvedObjectNumber = 0;
 
         mainCanvas.SetActive(false);
-        // TODO Allow this method to work properly
+
         BlockInteractions();
         UnlockMainDoor();
         if (!skipGlassDoorPhase) LockGlassDoor();
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
         {
             // 2. start of game rules computer voice
             Debug.Log("Start of the presentation of the rules");
-            ComputerVoiceManager.instance.SayGameRules(0.5f, onRulesCompleted);
+            ComputerVoiceManager.instance.SayGameRules(1.0f, onRulesCompleted);
         }
         else
         {
@@ -268,11 +268,17 @@ public class GameManager : MonoBehaviour
     {
         gameFinished = true;
 
+        // Say the defeat message
+        ComputerVoiceManager.instance.SayDefeatMessage(2.0f, onDefeatMessageCompleate);
+    }
+
+    private void onDefeatMessageCompleate()
+    {
         // Start the defeat musique
         AmbianceMusicManager.instance.PlayDefeatMusique(0.5f);
 
-        // Say the defeat message
-        ComputerVoiceManager.instance.SayDefeatMessage(2.0f);
+        // Play Base immersion animation
+        BaseManager.instance.PlayBaseImmersion();
     }
 
     public void GameWon()

@@ -33,7 +33,7 @@ public class MainDoorController : MonoBehaviour
             doorIsOpened = !doorIsOpened;
             anim.SetBool("character_nearby", doorIsOpened);
 
-            if (doorIsOpened && GameManager.instance.GetGameStarted())
+            if (doorIsOpened && GameManager.instance.GetGameStarted() && !GameManager.instance.GetGameFinished())
             {
                 GameManager.instance.GameWon();
             }
