@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -28,10 +30,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject xrOrigin;
 
 
-    [Header("Main UI")]
+    [Header("UI")]
     [SerializeField] private GameObject mainCanvas;
     [SerializeField] private GameObject exitButton;
-    [SerializeField] private bool exitButtonEnable;
+    [SerializeField] private GameObject chessBoardUI;
+    [SerializeField] private GameObject winGameMessage;
+    [SerializeField] private GameObject lostGameMessage;
+    [SerializeField] private GameObject replayButton;
+    [SerializeField] private GameObject gamePlayUI;
 
 
     [Header("Projector")]
@@ -58,6 +64,7 @@ public class GameManager : MonoBehaviour
     private bool gameStarted = false;
     private bool gameFinished = false;
     private CountdownTimer countdownTimer;
+    private bool helpDisplayed = false;
 
     private void Awake()
     {
@@ -72,35 +79,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //Initialization settings
-        countdownTimer = GetComponent<CountdownTimer>();
-        countdownTimer.enabled = false;
-
-        if (exitButtonEnable)
-        {
-            if (!exitButton.activeSelf) exitButton.SetActive(true);
-        }
-        else
-        {
-            if (exitButton.activeSelf) exitButton.SetActive(false);
-        }
-
-        mouvedObjectNumber = 0;
-
-        mainCanvas.SetActive(false);
-
-        BlockInteractions();
-        UnlockMainDoor();
-        if (!skipGlassDoorPhase) LockGlassDoor();
-        if (!skipChessBoardPhase) LockProjector();
-
-        SetAlarmLights(false);
-
-        if (consoleScreen.activeSelf) consoleScreen.SetActive(false);
-        if (consoleInteractable.enabled == true) consoleInteractable.enabled = false;
-
-        if (origami.activeSelf) origami.SetActive(false);
-
+        InitSettings();
+        
         // Playing intro or Starting game
         if (!skipIntroPhase)
         {
@@ -118,7 +98,57 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void BlockInteractions()
+    private void InitSettings()
+    {
+        mouvedObjectNumber = 0;
+
+        // Interactions
+        BlockInteractions();
+
+        // UI
+        countdownTimer = GetComponent<CountdownTimer>();
+        countdownTimer.enabled = false;
+
+        if (!exitButton.activeSelf) exitButton.SetActive(true);
+        if (replayButton.activeSelf) replayButton.SetActive(false);
+        if (chessBoardUI.activeSelf) chessBoardUI.SetActive(false);
+        if (winGameMessage.activeSelf) winGameMessage.SetActive(false);
+        if (lostGameMessage.activeSelf) lostGameMessage.SetActive(false);
+        if (gamePlayUI.activeSelf) gamePlayUI.SetActive(false);
+
+        helpDisplayed = false;
+
+        mainCanvas.SetActive(false);
+
+
+        // Doors
+        UnlockMainDoor();
+        if (!skipGlassDoorPhase)
+            LockGlassDoor();
+        else
+        {
+            UnlockGlassDoor();
+            if (!chessBoardUI.activeSelf) chessBoardUI.SetActive(true);
+        }
+
+        if (!skipChessBoardPhase)
+            LockProjector();
+        else
+            UnlockProjector();
+
+        // Alarm
+            SetAlarmLights(false);
+        SoundManager.instance.StopSound();
+
+        // Console and Origami
+        if (consoleScreen.activeSelf) consoleScreen.SetActive(false);
+        if (consoleInteractable.enabled == true) consoleInteractable.enabled = false;
+
+        if (origami.activeSelf) origami.SetActive(false);
+
+    }
+
+    private void BlockInteractions()
     {
         //SetInteractorsEnabled(leftInteractors, false);
         //SetInteractorsEnabled(rightInteractors, false);
@@ -127,7 +157,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Interactions blocked");
     }
 
-    public void AllowInteractions()
+    private void AllowInteractions()
     {
         //SetInteractorsEnabled(leftInteractors, true);
         //SetInteractorsEnabled(rightInteractors, true);
@@ -161,11 +191,16 @@ public class GameManager : MonoBehaviour
         projectorXRInteractable.enabled = false;
     }
 
+    private void UnlockProjector()
+    {
+        projectorXRInteractable.enabled = true;
+    }
+
     public void ChessboardComplete()
     {
         // The chessboard is complete: 
         // 1. Allow the projector to turn on
-        projectorXRInteractable.enabled = true;
+        UnlockProjector();
 
         // 2. Launch the computer voice to announce the information to the player
         ComputerVoiceManager.instance.SayChessboardComplete(1.0f);
@@ -208,6 +243,9 @@ public class GameManager : MonoBehaviour
             SoundManager.instance.PlayDoorUnlockSound(1.0f);
             UnlockGlassDoor();
             ComputerVoiceManager.instance.SayGlassDoorIsUnLocked(2.0f);
+
+            // Display the Chess board info panel
+            if (!chessBoardUI.activeSelf) chessBoardUI.SetActive(true);
         }
     }
 
@@ -268,6 +306,10 @@ public class GameManager : MonoBehaviour
     {
         gameFinished = true;
 
+        // Hide the Chess boad info and Display the lost game message
+        if (chessBoardUI.activeSelf) chessBoardUI.SetActive(false);
+        if (!lostGameMessage.activeSelf) lostGameMessage.SetActive(true);
+
         // Say the defeat message
         ComputerVoiceManager.instance.SayDefeatMessage(2.0f, onDefeatMessageCompleate);
     }
@@ -290,6 +332,10 @@ public class GameManager : MonoBehaviour
         // Set the alarm red light off
         SetAlarmLights(false);
 
+        // Hide the Chess board info and Display the win game message
+        if (chessBoardUI.activeSelf) chessBoardUI.SetActive(false);
+        if (!winGameMessage.activeSelf) winGameMessage.SetActive(true);
+
         // Start the victory musique
         AmbianceMusicManager.instance.PlayVictoryMusique(0.5f);
 
@@ -307,9 +353,31 @@ public class GameManager : MonoBehaviour
         return gameFinished;
     }
 
+    public void DisplayReplay()
+    {
+        if (!replayButton.activeSelf) replayButton.SetActive(true);
+    }
+
+    public void DisplayHelp()
+    {
+        helpDisplayed = !helpDisplayed;
+        if (gamePlayUI.activeSelf != helpDisplayed) gamePlayUI.SetActive(helpDisplayed);
+    }
+
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void Replay()
+    {
+        //InitSettings();
+
+        //xrOrigin.transform.position = new Vector3(1622.72f, 153.388f, 1492.845f);
+        //xrOrigin.transform.rotation = Quaternion.identity;
+
+        //StartGame();
+        SceneManager.LoadScene(0);
     }
 
     private void onRulesCompleted()

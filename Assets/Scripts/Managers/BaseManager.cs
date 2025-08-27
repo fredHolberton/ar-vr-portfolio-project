@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BaseManager : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class BaseManager : MonoBehaviour
 
     public void EndOfAnimation()
     {
-        GameManager.instance.Exit();
+        GameManager.instance.DisplayReplay();
+    }
+
+    public void InitPosition()
+    {
+        transform.position = new Vector3(0, 0, 0);
     }
 }
