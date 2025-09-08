@@ -19,6 +19,8 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip consoleScreenDisplaySoundClip;
 
+    [SerializeField] private AudioClip chessPieceFoundSoundClip;
+
     [SerializeField] private AudioClip alarmSoundClip;
 
 
@@ -48,6 +50,11 @@ public class SoundManager : MonoBehaviour
     public void PlayConsoleScreenDisplaySound(float volume)
     {
         audioSource.PlayOneShot(consoleScreenDisplaySoundClip, volume);
+    }
+
+    public void PlayChessPieceFoundSound(float volume)
+    {
+        audioSource.PlayOneShot(chessPieceFoundSoundClip, volume);
     }
 
     public void PlayAlarmSound(float volume)

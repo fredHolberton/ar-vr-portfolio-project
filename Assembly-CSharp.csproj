@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Managers\AmbianceMusicManager.cs" />
     <Compile Include="Assets\Scripts\Managers\IntroManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Input\UIClickHandler.cs" />
     <Compile Include="Assets\Scripts\Environment\ChessBoadController.cs" />
     <Compile Include="Assets\PackageAssets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\UnityTree.cs" />
     <Compile Include="Assets\PackageAssets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldPopulation\FastPoissonDiskSampling.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Environment\GlassDoorController.cs" />
     <Compile Include="Assets\PackageAssets\SuperiorWorlds\WorldBuilder\Core\Scripts\WorldBuilder\UnityDetail.cs" />
+    <Compile Include="Assets\Scripts\Managers\XROriginController.cs" />
     <Compile Include="Assets\Scripts\Environment\ProjectorController.cs" />
     <Compile Include="Assets\PackageAssets\Ata Khani\Modular Sewer Props\Scripts\SelectionBase.cs" />
     <Compile Include="Assets\Scripts\Managers\ComputerVoiceManager.cs" />

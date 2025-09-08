@@ -73,6 +73,7 @@ public class ChessBoadController : MonoBehaviour
                 chessPieces[nbFoundPieces].GetComponent<Image>().sprite = rookDarkImage;
             }
             chessPieces[nbFoundPieces].SetActive(true);
+            SoundManager.instance.PlayChessPieceFoundSound(1.0f);
             nbFoundPieces += 1;
 
             if (nbFoundPieces == 4)

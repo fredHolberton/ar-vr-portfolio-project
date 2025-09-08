@@ -52,7 +52,7 @@ public class IntroManager : MonoBehaviour
     void Start()
     {
         _BoatAndCameraAreSynchronized = false;
-        _decalage = new Vector3(0.343f, 0.167f, 0.067f);
+        _decalage = new Vector3(0.403f, 0.0f, 0.137f);
 
         playerPerson.SetActive(true);
 

@@ -226,13 +226,6 @@ public class GameManager : MonoBehaviour
     public void IncrementMovedObjectNumber()
     {
         mouvedObjectNumber += 1;
-        //if (mouvedObjectNumber == minMouvedObjectNumber)
-        //{
-            // The glass door may be unlocked
-            //SoundManager.instance.PlayDoorOpenSound(1.0f);
-            //UnlockGlassDoor();
-            //ComputerVoiceManager.instance.SayGlassDoorIsUnLocked(2.0f);
-        //}
     }
 
     public void TheGlassDoorMustBeUnlocked()
@@ -282,7 +275,7 @@ public class GameManager : MonoBehaviour
 
     public void TheMainDoorMustBeUnlocked()
     {
-        if (MainDoorController.instance.GetDoorIsLocked())
+        if (MainDoorController.instance.GetDoorIsLocked() && !gameFinished)
         {
             // The main door may be unlocked
             SoundManager.instance.PlayDoorUnlockSound(1.0f);
@@ -293,7 +286,7 @@ public class GameManager : MonoBehaviour
 
     public void TheMainDoorMustBeLocked()
     {
-        if (!MainDoorController.instance.GetDoorIsLocked())
+        if (!MainDoorController.instance.GetDoorIsLocked() && !gameFinished)
         {
             // The main door may be unlocked
             SoundManager.instance.PlayMainDoorLockSound(1.0f);
@@ -371,12 +364,6 @@ public class GameManager : MonoBehaviour
 
     public void Replay()
     {
-        //InitSettings();
-
-        //xrOrigin.transform.position = new Vector3(1622.72f, 153.388f, 1492.845f);
-        //xrOrigin.transform.rotation = Quaternion.identity;
-
-        //StartGame();
         SceneManager.LoadScene(0);
     }
 
@@ -389,7 +376,6 @@ public class GameManager : MonoBehaviour
         countdownTimer.enabled = true;
 
         // 2. unlock game interactions
-        // TODO Allow this method to work properly
         AllowInteractions();
 
         // 3. start the game ambiance music
