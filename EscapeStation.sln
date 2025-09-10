@@ -131,6 +131,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.CoreUtils.Editor",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.AI.Navigation.Editor", "Unity.AI.Navigation.Editor.csproj", "{F1C92732-4990-5FAB-167E-B5D42B54B9D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Sprite.Editor", "Unity.2D.Sprite.Editor.csproj", "{ABED0529-0033-2F0C-D54E-F685A76D1DFD}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Recorder", "Unity.Recorder.csproj", "{F344314C-6D1F-F9B4-8436-C323B1E20E1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.OpenXR.Editor", "Unity.XR.OpenXR.Editor.csproj", "{24FD427D-3CDC-4877-9E30-25DE85EF47F3}"
@@ -503,6 +505,10 @@ Global
 		{F1C92732-4990-5FAB-167E-B5D42B54B9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1C92732-4990-5FAB-167E-B5D42B54B9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1C92732-4990-5FAB-167E-B5D42B54B9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABED0529-0033-2F0C-D54E-F685A76D1DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABED0529-0033-2F0C-D54E-F685A76D1DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABED0529-0033-2F0C-D54E-F685A76D1DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABED0529-0033-2F0C-D54E-F685A76D1DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F344314C-6D1F-F9B4-8436-C323B1E20E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F344314C-6D1F-F9B4-8436-C323B1E20E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F344314C-6D1F-F9B4-8436-C323B1E20E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
